@@ -24,6 +24,7 @@ body {
 	background-color: hsl(221, 39%, 11%);
 	border-radius: 1em;
 	max-width: 420px;
+	width: 100%;
 	flex-grow: 1;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
 		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -92,10 +93,69 @@ body {
 .search--section .location--button span {
 	font-size: 1.3em;
 }
+.weather--section .current--waather {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0 50px;
+}
+.current--waather .weather--icon {
+	width: 140px;
+	aspect-ratio: 1;
+}
+.current--waather .temperature {
+	font-size: 3.38em;
+	margin: 23px 0;
+	display: flex;
+}
+.current--waather .temperature span {
+	font-size: 1.56rem;
+	font-weight: 500;
+	margin: 5px 0 0 2px;
+}
+.current--waather .description {
+	font-size: 1.25em;
+	font-weight: 500;
+}
+.hourly--weather {
+	padding: 16px 25px;
+	border-top: 1px solid hsla(215, 16%, 47%, 0.61);
+}
 .hourly--weather .weather--list {
 	display: flex;
+	list-style: none;
+	gap: 43px;
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-color: transparent transparent;
+	padding-bottom: 16px;
+	margin-bottom: -16px;
+}
+.hourly--weather:hover .weather--list {
+	scrollbar-color: hsl(215, 25%, 27%) transparent;
+}
+.hourly--weather .weather--item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 7px;
+	font-weight: 500;
 }
 .hourly--weather .weather--item .weather--icon {
 	width: 29px;
 	aspect-ratio: 1;
+}
+@media screen and (max-width: 640px) {
+	body {
+		padding: 15px;
+	}
+	.search--section {
+		padding: 20px;
+	}
+	.hourly--weather {
+		padding: 16px 20px;
+	}
+	.hourly--weather .weather--list {
+		gap: 32px;
+	}
 }
