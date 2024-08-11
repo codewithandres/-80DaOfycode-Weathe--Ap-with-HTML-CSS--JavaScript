@@ -1,0 +1,101 @@
+/* google font Nunito */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+	--font-family: 'Nunito', sans-serif;
+	--bg-color-dark: hsl(224, 71%, 4%);
+	--text-color-whithe: hsl(252, 33%, 97%);
+}
+* {
+	font-family: var(--font-family);
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: var(--bg-color-dark);
+	color: var(--text-color-whithe);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+.conteiner {
+	background-color: hsl(221, 39%, 11%);
+	border-radius: 1em;
+	max-width: 420px;
+	flex-grow: 1;
+	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.search--section {
+	display: flex;
+	gap: 1em;
+	padding: 1.5em;
+	align-items: center;
+}
+.search--section .input--wrapper {
+	height: 54px;
+	width: 100%;
+	position: relative;
+}
+.search--section .input--wrapper span {
+	position: absolute;
+	top: 50%;
+	left: 17px;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+.search--section .search--input {
+	height: 100%;
+	width: 100%;
+	padding: 0 20px 0 50px;
+	border-radius: 6px;
+	border: none;
+	text-transform: uppercase;
+	background-color: transparent;
+	box-shadow: hsla(0, 0%, 100%, 0.253) 0px 0px 0px 1px;
+	transition: 200ms ease;
+	outline: none;
+	font-size: 1em;
+	font-weight: 500;
+	color: hsl(213, 27%, 84%);
+	&:focus {
+		box-shadow: hsla(0, 0%, 100%, 0.253) 0px 0px 0px 3px;
+	}
+	&::placeholder {
+		text-transform: none;
+	}
+}
+.search--section .location--button {
+	height: 56px;
+	width: 56px;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent;
+	outline: none;
+	border-radius: 6px;
+	box-shadow: hsla(0, 0%, 100%, 0.253) 0px 0px 0px 1px;
+	border: none;
+	color: hsl(210, 40%, 96%);
+	cursor: pointer;
+	transition: 200ms ease-in;
+	&:hover {
+		background-color: hsl(215, 14%, 34%);
+	}
+	&:active {
+		box-shadow: hsla(0, 0%, 100%, 0.253) 0px 0px 0px 3px;
+	}
+}
+.search--section .location--button span {
+	font-size: 1.3em;
+}
+.hourly--weather .weather--list {
+	display: flex;
+}
+.hourly--weather .weather--item .weather--icon {
+	width: 29px;
+	aspect-ratio: 1;
+}
