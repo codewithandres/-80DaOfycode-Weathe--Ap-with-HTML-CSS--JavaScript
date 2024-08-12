@@ -36,7 +36,7 @@ const displayHourlyForescat = (hourlyData) => {
 	hourlyWeatherDiv.innerHTML = next24HoursData
 		.map(({ temp_c, condition, time }) => {
 			const temperature = Math.floor(temp_c);
-			const times = time;
+			const times = time.split(' ').at(1).substring(0, 5);
 
 			const weatherIcon = Object.keys(weatherCodes).find((icon) =>
 				weatherCodes[icon].includes(condition.code),
@@ -44,14 +44,14 @@ const displayHourlyForescat = (hourlyData) => {
 
 			return `
 				<li class="weather--item">
-					<p class="time">${time}</p>
+					<p class="time">${times}</p>
 					<img src="assets/icons/${weatherIcon}.svg" class="weather--icon">
 					<p class="temperature">${temperature}°</p>
 				</li>`;
 		})
 		.join('');
 
-	console.log(hourlyWeatherHTML);
+	//console.log(hourlyWeatherHTML);
 };
 
 const getWeatherDetails = async (cityName) => {
