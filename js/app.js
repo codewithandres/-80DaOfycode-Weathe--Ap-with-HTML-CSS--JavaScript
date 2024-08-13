@@ -1,5 +1,6 @@
 const searchInput = document.querySelector('.search--input');
 const currentWeatherDiv = document.querySelector('.current--waather');
+const locationButton = document.querySelector('.location--button');
 const hourlyWeatherDiv = document.querySelector(
 	'.hourly--weather .weather--list',
 );
@@ -54,8 +55,9 @@ const displayHourlyForescat = (hourlyData) => {
 	//console.log(hourlyWeatherHTML);
 };
 
-const getWeatherDetails = async (cityName) => {
-	const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
+const getWeatherDetails = async (API_URL) => {
+	window.innerWidth <= 768 && searchInput.blur();
+
 	try {
 		//Fetch weather data from the Api and parse the response as Json
 		const response = await fetch(API_URL);
@@ -88,15 +90,40 @@ const getWeatherDetails = async (cityName) => {
 
 		displayHourlyForescat(combinedHourliData);
 
-		//console.log({ combinedHourliData });
+		//searchInput.value = current.location.name;
 	} catch (error) {
 		console.log(error);
 	}
+};
+
+//set up the weather request for a specific city
+const setuWeatherRequest = (cityName) => {
+	const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${cityName}&days=2`;
+
+	getWeatherDetails(API_URL);
 };
 
 // handle user input in the search box
 searchInput.addEventListener('keyup', (event) => {
 	const cityName = searchInput.value.trim();
 
-	if (event.key === 'Enter' && cityName) getWeatherDetails(cityName);
+	if (event.key === 'Enter' && cityName) setuWeatherRequest(cityName);
+});
+
+//Get user coordinates
+locationButton.addEventListener('click', () => {
+	navigator.geolocation.getCurrentPosition(
+		(position) => {
+			const { altitude, longitude } = position.coords;
+
+			const API_URL = ` http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${altitude},${longitude}&days=2`;
+
+			getWeatherDetails(API_URL);
+		},
+		(error) => {
+			alert(
+				'Location accees denied, please enable permission to use this feature ',
+			);
+		},
+	);
 });
