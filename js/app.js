@@ -83,6 +83,7 @@ const getWeatherDetails = async (API_URL) => {
 		currentWeatherDiv
 			.querySelector('.weather--icon')
 			.classList.add('animate__jello', 'animate__animated');
+
 		currentWeatherDiv.querySelector('.description').textContent = text;
 		currentWeatherDiv
 			.querySelector('.description')
@@ -99,8 +100,6 @@ const getWeatherDetails = async (API_URL) => {
 		];
 
 		displayHourlyForescat(combinedHourliData);
-
-		//searchInput.value = current.location.name;
 	} catch (error) {
 		document.body.classList.add('show--no--result');
 	}
