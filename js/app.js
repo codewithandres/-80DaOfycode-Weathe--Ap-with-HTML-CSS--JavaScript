@@ -44,7 +44,7 @@ const displayHourlyForescat = (hourlyData) => {
 			);
 
 			return `
-				<li class="weather--item">
+				<li class="weather--item animate__animated animate__bounceIn animate__delay-1s">
 					<p class="time">${times}</p>
 					<img src="assets/icons/${weatherIcon}.svg" class="weather--icon">
 					<p class="temperature">${temperature}°</p>
@@ -79,8 +79,17 @@ const getWeatherDetails = async (API_URL) => {
 		currentWeatherDiv.querySelector(
 			'.weather--icon',
 		).src = `assets/icons/${weatherIcon}.svg`;
-
+		currentWeatherDiv
+			.querySelector('.weather--icon')
+			.classList.add('animate__jello', 'animate__animated');
 		currentWeatherDiv.querySelector('.description').textContent = text;
+		currentWeatherDiv
+			.querySelector('.description')
+			.classList.add(
+				'animate__animated',
+				'animate__slideInDown',
+				'animate__delay-300ms',
+			);
 
 		//combine hourly data from today and tomorrow
 		const combinedHourliData = [
