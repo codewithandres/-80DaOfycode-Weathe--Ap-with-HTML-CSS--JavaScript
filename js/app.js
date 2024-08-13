@@ -57,6 +57,7 @@ const displayHourlyForescat = (hourlyData) => {
 
 const getWeatherDetails = async (API_URL) => {
 	window.innerWidth <= 768 && searchInput.blur();
+	document.body.classList.remove('show--no--result');
 
 	try {
 		//Fetch weather data from the Api and parse the response as Json
@@ -101,7 +102,7 @@ const getWeatherDetails = async (API_URL) => {
 
 		//searchInput.value = current.location.name;
 	} catch (error) {
-		console.log(error);
+		document.body.classList.add('show--no--result');
 	}
 };
 

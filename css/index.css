@@ -28,6 +28,8 @@ body {
 	flex-grow: 1;
 	box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
 		rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+	position: relative;
+	overflow: hidden;
 }
 .search--section {
 	display: flex;
@@ -92,6 +94,33 @@ body {
 }
 .search--section .location--button span {
 	font-size: 1.3em;
+}
+.no--result {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+	padding: 40px;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+body.show--no--result .no--result {
+	display: flex;
+}
+.no--result .title {
+	margin: 25px 0 15px;
+	font-size: 1.4em;
+}
+.no--result .message {
+	font-weight: 500;
+	font-size: 1.01em;
+}
+body.show--no--result .weather--section {
+	visibility: hidden;
 }
 .weather--section .current--waather {
 	display: flex;
